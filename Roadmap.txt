@@ -1,0 +1,10 @@
+Creating an NLP based movie recommender
+
+# Create a movies database with sqlite3
+# Insert movie information acquired from the iMDB API
+# Filter plots by genres
+# create a bag of words for each genre
+# Build a topic signature using chi-squared test of association
+# Merge genres which are similar, as determined by co-sine similarity
+# Compare movies which are similar based on co-sine similarity of genre scores
+# Build a static website with a sign-up form, a page to enter movie and an output page which shows the recommended movie posters
