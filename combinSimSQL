@@ -1,0 +1,17 @@
+#selecting simScores only
+
+select simScore from combin
+where movie1='tt03' or movie2='tt03'
+order by simScore desc;
+
+#1.selecting movie names and simScores using union clause
+#2.ordering the results by similarity score in descending order
+#3.limiting the ouput to return the top three results
+
+select movie1,simScore from combin
+where movie2='tt03'
+union 
+select movie2, simScore from combin
+where movie1='tt03'
+order by simScore desc
+limit 3;
