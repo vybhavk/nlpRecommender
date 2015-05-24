@@ -1,0 +1,18 @@
+// load nodes from csv
+using periodic commit 500
+load csv with headers from
+"file:/home/clarence/Documents/theDataGeek/nlpRecommender/nodes.csv" as nodes
+create (:Movie {id:nodes.Node, name:nodes.Name});
+
+//load relationships from csv
+using periodic commit 500
+load csv with headers from
+"file:/home/clarence/Documents/theDataGeek/nlpRecommender/rel.csv" as rels
+match (from {id:rels.From}), (to {id:rels.To})
+create from-[:Similarity {value:toFloat(rels.Rel_value)}]->to;
+
+//search for top three similar movies
+match (node {name:'tt1'})-[Similarity]->(n)
+return node, Similarity.value, n
+order by Similarity.value desc
+limit 3;
